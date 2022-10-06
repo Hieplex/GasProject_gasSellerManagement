@@ -13,6 +13,7 @@ import com.google.android.material.button.MaterialButton;
 import gasproject.my.R;
 
 public class SignInFragment extends Fragment {
+    private static SignInFragment instance;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -20,4 +21,5 @@ public class SignInFragment extends Fragment {
 
         return inflater.inflate(R.layout.fragment_sign_in, container, false);
     }
+
 }
