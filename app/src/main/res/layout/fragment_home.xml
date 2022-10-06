@@ -44,7 +44,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="30dp"
-        android:text="shipper" />
+        android:text="shipper1" />
 
     <ImageView
         android:id="@+id/imageView3"
