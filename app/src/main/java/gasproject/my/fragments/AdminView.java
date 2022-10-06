@@ -50,12 +50,11 @@ public class AdminView extends Fragment {
         CustomerList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Customerlist.class);
-                startActivity(intent);
-//
-//                FragmentManager manager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction transaction = manager.beginTransaction();
-//                transaction.replace(R.id.frame_layout, new Customerlist()).commit();
+
+               FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                Customerlist fragment1 = new Customerlist();
+                transaction.replace(R.id.frame_layout,fragment1);
+                transaction.commit();
 
 
             }

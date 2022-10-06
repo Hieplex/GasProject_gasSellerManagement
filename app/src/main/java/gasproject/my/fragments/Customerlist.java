@@ -29,7 +29,7 @@ import gasproject.my.RecycleViewInterface;
 import gasproject.my.User;
 
 
-public class Customerlist extends AppCompatActivity implements RecycleViewInterface {
+public class Customerlist extends Fragment implements RecycleViewInterface {
 
     private ArrayList<User> userlist;
     private RecyclerView recyclerview;
@@ -37,19 +37,20 @@ public class Customerlist extends AppCompatActivity implements RecycleViewInterf
     RecycleAdapter adapter;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_customerlist);
+        View view  = inflater.inflate(R.layout.fragment_customerlist,container,false);
         userlist = new ArrayList<>();
-        recyclerview = findViewById(R.id.recyclerView);
+        recyclerview = view.findViewById(R.id.recyclerView);
         setUserInfo();
         setAdapter();
         databasereference = FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("User");
         recyclerview.setHasFixedSize(true);
         userlist = new ArrayList<>();
-        recyclerview.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecycleAdapter(this,userlist,this);
+        recyclerview.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        adapter = new RecycleAdapter(this.getActivity(),userlist,this);
         recyclerview.setAdapter(adapter);
 
         databasereference.addValueEventListener(new ValueEventListener() {
@@ -68,6 +69,7 @@ public class Customerlist extends AppCompatActivity implements RecycleViewInterf
             }
 
         });
+        return view;
     }
 
     private void setAdapter() {
@@ -82,11 +84,10 @@ public class Customerlist extends AppCompatActivity implements RecycleViewInterf
 
     @Override
     public void onItemClick(int position) {
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                ShipperView fragment1 = new ShipperView();
-//                transaction.replace(R.id.frame_layout, fragment1);
-//                transaction.commit();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                ShipperView fragment1 = new ShipperView();
+                transaction.replace(R.id.frame_layout, fragment1);
+                transaction.commit();
+
     }
 }
