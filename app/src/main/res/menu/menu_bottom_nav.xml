@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/Shipper"
-        android:icon="@drawable/truck"
+    <item   android:id="@+id/menu_shipper"
+        android:icon="@drawable/transportation"
         android:title="@string/shipper" />
-    <item
-        android:id="@+id/Manager"
+
+    <item   android:id="@+id/menu_manager"
         android:icon="@drawable/manager1"
         android:title="@string/manager" />
-    <item
-        android:id="@+id/Gas"
-        android:icon="@drawable/gascan"
+
+    <item   android:id="@+id/menu_gas"
+        android:icon="@drawable/gasicon"
         android:title="@string/gas" />
+
+
 </menu>

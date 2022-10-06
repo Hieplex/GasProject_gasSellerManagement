@@ -1,22 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.AdminView">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="30dp"
-        android:src="@drawable/trasporter" />
-    <ImageView
+
+    <ImageButton
         android:id="@+id/imageView2"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:layout_marginTop="100dp"
         android:layout_marginLeft="230dp"
-        android:src="@drawable/manager" />
+        android:src="@drawable/manager"
+        android:scaleType="fitCenter"/>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="30dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:text="shipper" />
+
+    <ImageButton
+        android:id="@+id/imageViewshipper"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/trasporter"
+        android:scaleType="fitCenter"/>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="230dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:text="manager" />
+
 </FrameLayout>

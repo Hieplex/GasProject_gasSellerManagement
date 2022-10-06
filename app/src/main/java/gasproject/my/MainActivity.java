@@ -6,15 +6,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
+
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
@@ -24,17 +24,16 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView ;
-import gasproject.my.databinding.ActivityMainBinding;
 import gasproject.my.fragments.AdminView;
 import gasproject.my.fragments.HomeFragment;
 import gasproject.my.fragments.ShipperView;
 import gasproject.my.fragments.SignInFragment;
-import nl.joery.animatedbottombar.AnimatedBottomBar;
 public class MainActivity extends AppCompatActivity {
     private Button loginbtn ;
     private Button camerabtn ;
-    ActivityMainBinding binding;
-    AnimatedBottomBar bottomnav ;
+    String[] items = {"12kg","45kg","48kg"};
+    ArrayAdapter<String> adapterItems;
+    AutoCompleteTextView listgas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.fragment_sign_in);
 
         Button loginbtn = (Button) findViewById(R.id.loginbtn);
+
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,12 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
             }
         });
-
-
-
-
-
-
 
     }
 }
