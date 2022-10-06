@@ -2,32 +2,24 @@ package gasproject.my;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView ;
 import gasproject.my.fragments.AdminView;
-import gasproject.my.fragments.HomeFragment;
+import gasproject.my.fragments.GasProductList;
 import gasproject.my.fragments.ShipperView;
-import gasproject.my.fragments.SignInFragment;
+
 public class MainActivity extends AppCompatActivity {
     private Button loginbtn ;
     private Button camerabtn ;
@@ -52,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        loadfrag(new HomeFragment(),0);
 
                         switch (item.getItemId()){
                             case R.id.Shipper:
@@ -62,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case R.id.Manager:
                                 loadfrag(new AdminView(),1);
+                                break;
+
+                            case R.id.Gas:
+                                loadfrag(new GasProductList(),1);
+                                break;
                         }
                         return true ;
                     }

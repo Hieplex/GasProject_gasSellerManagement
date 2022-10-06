@@ -18,22 +18,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomnavigationView"
         />
 
-<!--    <nl.joery.animatedbottombar.AnimatedBottomBar-->
-<!--        android:id="@+id/bottombar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="664dp"-->
-<!--        android:background="@color/white"-->
-<!--        app:abb_badgeTextColor="@color/white"-->
-<!--        app:abb_indicatorAnimation="slide"-->
-<!--        app:abb_indicatorAppearance="round"-->
-<!--        app:abb_indicatorColor="@color/purple_500"-->
-<!--        app:abb_indicatorLocation="top"-->
-<!--        app:abb_selectedTabType="text"-->
-<!--        app:abb_tabs="@menu/menu"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

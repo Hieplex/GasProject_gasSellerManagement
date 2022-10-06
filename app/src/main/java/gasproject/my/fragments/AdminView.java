@@ -1,10 +1,12 @@
 package gasproject.my.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
@@ -27,12 +29,12 @@ public class AdminView extends Fragment {
         return view ;
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         ImageButton shipper = view.findViewById(R.id.imageViewshipper);
-
 
         shipper.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,5 +45,25 @@ public class AdminView extends Fragment {
                 transaction.commit();
             }
         });
+        ImageButton CustomerList = view.findViewById(R.id.imageCustomer);
+
+        CustomerList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), Customerlist.class);
+                startActivity(intent);
+//
+//                FragmentManager manager = getActivity().getSupportFragmentManager();
+//                FragmentTransaction transaction = manager.beginTransaction();
+//                transaction.replace(R.id.frame_layout, new Customerlist()).commit();
+
+
+            }
+        });
+
     }
+    public  void onBackPressed(){
+
+    }
+
 }

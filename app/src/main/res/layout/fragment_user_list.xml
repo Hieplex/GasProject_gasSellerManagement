@@ -15,6 +15,7 @@
         android:text="Tên"
         android:translationX="100dp"
         android:translationY="50dp"
+        android:imeOptions="actionDone"
         />
 
     <EditText
@@ -25,7 +26,8 @@
         android:inputType="text"
         android:translationY="210dp"
         android:translationX="100dp"
-        android:text=" Địa chỉ " />
+        android:text=" Địa chỉ "
+        android:imeOptions="actionDone"/>
 
     <EditText
         android:id="@+id/CustomerPhoneNumber"
@@ -35,23 +37,36 @@
         android:inputType="text"
         android:translationY="150dp"
         android:translationX="100dp"
-        android:text="Số điện thoại " />
+        android:text="Số điện thoại "
+        android:imeOptions="actionDone"
+
+        />
+
+    <RadioGroup
+        android:layout_width="210dp"
+        android:layout_height="45dp"
+        android:translationX="100dp"
+        android:translationY="100dp"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:id="@+id/GenderMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nam"
+            />
+
+        <RadioButton
+            android:id="@+id/GenderWomen"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Nữ"
+            android:translationX="120dp"
+            android:translationY="-45dp" />
+    </RadioGroup>
 
 
-    <RadioButton
-        android:id="@+id/GenderMale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nam"
-        android:translationY="100dp"
-        android:translationX="100dp"/>
-    <RadioButton
-        android:id="@+id/GenderWomen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nữ"
-        android:translationY="100dp"
-        android:translationX="200dp"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,7 +76,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         >
         <AutoCompleteTextView
-            android:id="@+id/listGas"
+            android:id="@+id/listGasweight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="none"
@@ -79,12 +94,22 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         >
         <AutoCompleteTextView
-            android:id="@+id/listGasbrand"
+            android:id="@+id/listGastrademark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
+
             />
 
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/pushlistuserdata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm vào danh sách"
+        android:translationY="450dp"
+        android:layout_marginLeft="100dp"
+        />
 </FrameLayout>

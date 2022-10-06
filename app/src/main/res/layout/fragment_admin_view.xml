@@ -8,7 +8,7 @@
 
 
     <ImageButton
-        android:id="@+id/imageView2"
+        android:id="@+id/imageCustomer"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:layout_marginTop="100dp"
