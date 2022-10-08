@@ -166,7 +166,7 @@ public class UserList extends Fragment {
         User user = new User();
         customerName = getActivity().findViewById(R.id.CustomerName);
         customerPhoneNumber = getActivity().findViewById(R.id.CustomerPhoneNumber);
-        customeraddress = getActivity().findViewById(R.id.CustomerPhoneNumber);
+        customeraddress = getActivity().findViewById(R.id.CustomerAddress);
         listGastrademark = getActivity().findViewById(R.id.listGastrademark);
         listGasweight = getActivity().findViewById(R.id.listGasweight);
         radiogroup = getActivity().findViewById(R.id.radioGroup);
@@ -185,9 +185,9 @@ public class UserList extends Fragment {
         user.setAddress(address);
         user.setGascanweight(listGasweight.getText().toString());
         user.setGascanTrademark(listGastrademark.getText().toString());
+        user.setID(maxid+1);
 
 
-        user.setID(maxid++);
          DBref.child(String.valueOf(maxid+1)).setValue(user);
 
 
@@ -203,11 +203,11 @@ public class UserList extends Fragment {
         DBref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChildren())
+                if (snapshot.exists())
                 {
-                    return;
+                    maxid= (snapshot.getChildrenCount());
                 }
-                maxid= (snapshot.getChildrenCount());
+
 
 
             }

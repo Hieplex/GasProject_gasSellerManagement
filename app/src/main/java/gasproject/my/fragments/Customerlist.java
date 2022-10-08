@@ -84,10 +84,10 @@ public class Customerlist extends Fragment implements RecycleViewInterface {
 
     @Override
     public void onItemClick(int position) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                ShipperView fragment1 = new ShipperView();
-                transaction.replace(R.id.frame_layout, fragment1);
-                transaction.commit();
+//        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                CustomerInfo fragment1 = new CustomerInfo();
+//                transaction.replace(R.id.frame_layout, fragment1);
+//                transaction.commit();
 
     }
 }

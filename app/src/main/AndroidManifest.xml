@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gasproject.my"
     >
-
+<!--    <uses-permission-sdk-23 android:name="android.permission.INTERNET"/>-->
+<!--    <uses-permission-sdk-23 android:name="android.permission.CAMERA"/>-->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -27,7 +28,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".fragments.Customerlist"/>
+
 
     </application>
 

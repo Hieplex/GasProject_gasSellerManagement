@@ -7,11 +7,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
+
+import gasproject.my.fragments.CustomerInfo;
 
 public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHolder>{
     Context context;
@@ -66,6 +70,17 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
         User user = userlist.get(position);
 
         holder.nameText.setText(user.getName());
+
+        holder.nameText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                CustomerInfo fragment1 = new CustomerInfo(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGascanweight(),user.getGascanTrademark());
+                transaction.replace(R.id.frame_layout, fragment1);
+                transaction.commit();
+            }
+        });
     }
 
 

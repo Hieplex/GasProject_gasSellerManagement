@@ -17,6 +17,7 @@ import android.widget.Button;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.bottomnavigation.BottomNavigationView ;
 import gasproject.my.fragments.AdminView;
+import gasproject.my.fragments.Customerlist;
 import gasproject.my.fragments.GasProductList;
 import gasproject.my.fragments.ShipperView;
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()){
                             case R.id.Shipper:
 
-                                loadfrag(new ShipperView(),1);
+                                loadfrag(new Customerlist(),1);
 
                                 break;
                             case R.id.Manager:
