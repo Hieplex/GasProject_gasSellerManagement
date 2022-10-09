@@ -71,7 +71,7 @@ public class UserList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         User user = new User();
-        // Inflate the layout for this fragment
+
         View view =  inflater.inflate(R.layout.fragment_user_list, container, false);
 
 
@@ -189,16 +189,6 @@ public class UserList extends Fragment {
 
 
          DBref.child(String.valueOf(maxid+1)).setValue(user);
-
-
-//        DatabaseReference myRef = database.getReference("User/"+getuser);
-//        DatabaseReference myRef1 = database.getReference("User/"+getuser+"/Gender");
-//        DatabaseReference myRef2 = database.getReference("User/"+getuser+"/PhoneNumber");
-//        DatabaseReference myRef3 = database.getReference("User/"+getuser+"/Address");
-//        myRef.setValue(customerName.getText().toString().trim());
-//        myRef1.setValue(gender);
-//        myRef2.setValue(customerPhoneNumber.getText().toString().trim());
-//        myRef3.setValue(customeraddress.getText().toString().trim());
 
         DBref.addValueEventListener(new ValueEventListener() {
             @Override

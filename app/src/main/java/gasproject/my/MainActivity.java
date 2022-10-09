@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,8 +19,9 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.bottomnavigation.BottomNavigationView ;
 import gasproject.my.fragments.AdminView;
 import gasproject.my.fragments.Customerlist;
+import gasproject.my.fragments.GasList;
 import gasproject.my.fragments.GasProductList;
-import gasproject.my.fragments.ShipperView;
+import gasproject.my.fragments.Login;
 
 public class MainActivity extends AppCompatActivity {
     private Button loginbtn ;
@@ -30,54 +32,46 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        setContentView(R.layout.fragment_sign_in);
 
-        Button loginbtn = (Button) findViewById(R.id.loginbtn);
+        BottomNavigationView bottomnv = findViewById(R.id.bottomnavigationView);
+        bottomnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
 
-        loginbtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
-                setContentView(R.layout.activity_main);
-                BottomNavigationView bottomnv = findViewById(R.id.bottomnavigationView);
-                bottomnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                switch (item.getItemId()){
+                    case R.id.Shipper:
 
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        loadfrag(new Customerlist(),1);
 
-                        switch (item.getItemId()){
-                            case R.id.Shipper:
+                        break;
+                    case R.id.Manager:
+                        loadfrag(new AdminView(),1);
+                        break;
 
-                                loadfrag(new Customerlist(),1);
-
-                                break;
-                            case R.id.Manager:
-                                loadfrag(new AdminView(),1);
-                                break;
-
-                            case R.id.Gas:
-                                loadfrag(new GasProductList(),1);
-                                break;
-                        }
-                        return true ;
-                    }
-                } );
-            }
-            public void loadfrag(Fragment frag, int flag){
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-
-                if(flag==0)
-                {
-                    ft.add(R.id.frame_layout, frag );
+                    case R.id.Gas:
+                        loadfrag(new GasList(),1);
+                        break;
                 }
-                else{
-                    ft.replace(R.id.frame_layout, frag);
-                }
-                ft.commit();
+                return true ;
             }
-        });
+        } );
+    }
+    public void loadfrag(Fragment frag, int flag){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        if(flag==0)
+        {
+            ft.add(R.id.frame_layout, frag );
+        }
+        else{
+            ft.replace(R.id.frame_layout, frag);
+        }
+        ft.commit();
+    }
 
     }
-}

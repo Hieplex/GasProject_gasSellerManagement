@@ -2,8 +2,16 @@ package gasproject.my.fragments;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,11 +21,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,8 +37,7 @@ import java.io.ByteArrayOutputStream;
 import gasproject.my.R;
 import gasproject.my.databinding.ActivityMainBinding;
 
-
-public class CustomerInfo extends Fragment {
+public class CustomerInfoForManager extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,23 +48,25 @@ public class CustomerInfo extends Fragment {
     private String mParam1;
     private String mParam2;
     private ImageView capimg;
-     Button upimgbtn;
+    Button upimgbtn;
     RecyclerView.Adapter adapter;
     ActivityMainBinding binding;
     Uri uri;
     FirebaseAuth mAuth;
     private StorageReference storageReference;
     String name,phonenumber,address,gender,gasweight,gastrademark;
-    public CustomerInfo() {
+    Image img;
+    public CustomerInfoForManager() {
 
     }
-    public CustomerInfo(String name,int phonenumber,String address,String gender,String gasweight,String gastrademark) {
+    public CustomerInfoForManager(String name, int phonenumber, String address, String gender, String gasweight, String gastrademark) {
         this.name = name;
         this.phonenumber= String.valueOf(phonenumber);
         this.address = address;
         this.gender = gender;
         this.gasweight = gasweight;
         this.gastrademark = gastrademark;
+        this.img = img;
     }
 
 
@@ -83,42 +87,24 @@ public class CustomerInfo extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             FirebaseUser user = mAuth.getCurrentUser();
-            if (user != null) {
 
-                /* perform your actions here*/
-
-
-            } else {
-                signInAnonymously();
-            }
         }
+
     }
-    private void signInAnonymously() {
-        mAuth.signInAnonymously().addOnSuccessListener(getActivity(), new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        //???///
-                    }
-                })
-                .addOnFailureListener(getActivity(), new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        Log.e("MainActivity", "signFailed****** ", exception);
-                    }
-                });
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_customer_info, container, false);
+        View view = inflater.inflate(R.layout.fragment_customer_info_for_manager, container, false);
         TextView textview = view.findViewById(R.id.Name);
         TextView textview2 = view.findViewById(R.id.Phone);
         TextView textview3 = view.findViewById(R.id.Address);
         TextView textview4 = view.findViewById(R.id.Gascanweight);
         TextView textview5 = view.findViewById(R.id.Gastrademark);
         TextView textview6 = view.findViewById(R.id.Gender);
+        ImageView imgview = view.findViewById(R.id.CapImg);
         textview.setText(name);
         textview2.setText(phonenumber);
         textview3.setText(address);
@@ -126,19 +112,22 @@ public class CustomerInfo extends Fragment {
         textview5.setText(gasweight);
         textview6.setText(gender);
 
-            FloatingActionButton cambtn = view.findViewById(R.id.CamIcon);
-            capimg = view.findViewById(R.id.CapImg);
-                cambtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent open_camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(open_camera,100);
-                    }
-                });
-
         storageReference = FirebaseStorage.getInstance().getReference();
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference imgref = storage.getReference()
+                .child("image/"+name+".jpg");
 
-                return view;
+        imgref.getBytes(1024*1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                imgview.setImageBitmap(bitmap);
+            }
+        });
+
+
+
+        return view;
 
     }
 

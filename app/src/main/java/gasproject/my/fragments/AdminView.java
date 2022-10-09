@@ -52,7 +52,7 @@ public class AdminView extends Fragment {
             public void onClick(View view) {
 
                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Customerlist fragment1 = new Customerlist();
+                CustomerListForManager fragment1 = new CustomerListForManager();
                 transaction.replace(R.id.frame_layout,fragment1);
                 transaction.commit();
 

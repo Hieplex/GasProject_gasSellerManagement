@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CustomerInfoForManager">
+
+    <TextView
+        android:id="@+id/titleImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Image: "
+        android:translationX="20dp"
+        android:layout_marginTop="50dp"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:id="@+id/titleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Name: "
+        android:translationX="15dp"
+        android:layout_marginTop="150dp"
+        android:translationY="35dp"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customername"
+        android:translationX="220dp"
+        android:layout_marginTop="155dp"
+        android:translationY="35dp"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/titleGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Name: "
+        android:translationX="15dp"
+        android:layout_marginTop="160dp"
+        android:translationY="80dp"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/Gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customergender"
+        android:translationX="210dp"
+        android:layout_marginTop="155dp"
+        android:translationY="90dp"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/titlePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Phone: "
+        android:translationX="15dp"
+        android:layout_marginTop="170dp"
+        android:translationY="120dp"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/Phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customerphone"
+        android:translationX="200dp"
+        android:layout_marginTop="185dp"
+        android:translationY="120dp"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/titleAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Address: "
+        android:translationX="15dp"
+        android:layout_marginTop="150dp"
+        android:translationY="210dp"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customername"
+        android:translationX="220dp"
+        android:layout_marginTop="155dp"
+        android:translationY="210dp"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/titleGasweight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gas can weight: "
+        android:translationX="15dp"
+        android:layout_marginTop="320dp"
+        android:translationY="110dp"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/Gascanweight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="weigh"
+        android:translationX="220dp"
+        android:layout_marginTop="320dp"
+        android:translationY="110dp"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/titleGastrademark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gas can trademark: "
+        android:translationX="15dp"
+        android:layout_marginTop="370dp"
+        android:translationY="120dp"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/Gastrademark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="trademark"
+        android:translationX="240dp"
+        android:layout_marginTop="370dp"
+        android:translationY="125dp"
+        android:textSize="15dp"/>
+
+
+    <ImageView
+        tools:viewBindingIgnore="true"
+        android:id="@+id/CapImg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:translationX="220dp"
+        android:translationY="10dp"/>
+    <TextView
+        android:id="@+id/titleStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status: "
+        android:translationX="15dp"
+        android:layout_marginTop="370dp"
+        android:translationY="180dp"
+        android:textSize="20dp"/>
+    <Button
+        android:id="@+id/btnEditinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sửa Thông Tin"
+        android:translationX="66dp"
+        android:translationY="620dp"/>
+
+</FrameLayout>

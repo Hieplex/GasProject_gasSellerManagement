@@ -1,5 +1,8 @@
 package gasproject.my;
 
+import android.media.Image;
+import android.widget.ImageView;
+
 public class User {
     private String Name;
     private long ID;
@@ -8,6 +11,8 @@ public class User {
     private String Address;
     private String Gascanweight;
     private String GascanTrademark;
+    private String GascanColor;
+    private ImageView img;
 
     public User(){
     }
@@ -61,6 +66,20 @@ public class User {
 
     public void setGascanTrademark(String GascanTrademark) {
         this.GascanTrademark = GascanTrademark;
+    }
+    public String getGascanColor() {
+        return GascanColor;
+    }
+    public void setGascanColor(String GascanColor) {
+        this.GascanColor = GascanColor;
+    }
+
+    public ImageView getImage() {
+        return img;
+    }
+
+    public void setImage(ImageView img) {
+        this.img = img;
     }
 
 }
