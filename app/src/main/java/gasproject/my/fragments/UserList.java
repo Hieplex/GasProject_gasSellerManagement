@@ -33,6 +33,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import gasproject.my.R;
 import gasproject.my.User;
 
@@ -49,11 +51,18 @@ public class UserList extends Fragment {
     EditText customeraddress ;
     RadioButton radiobtn;
     RadioGroup radiogroup;
-//   TextInputLayout listGasweight;
-//    TextInputLayout listGastrademark;
+    ArrayAdapter<String> adapterItems2;
+    ArrayAdapter<String> adapterItems3;
+    AutoCompleteTextView listgastrademark;
+    AutoCompleteTextView listgasproduct;
+    ArrayList<String> list;
+    ArrayList<String> list2;
+    ValueEventListener mListener;
     User user;
     long maxid=0;
     DatabaseReference DBref;
+    DatabaseReference DBref2;
+    DatabaseReference DBref3;
     @TargetApi(Build.VERSION_CODES.M)
 
     private void closeKeyboard(EditText editText) {
@@ -70,39 +79,50 @@ public class UserList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        User user = new User();
 
         View view =  inflater.inflate(R.layout.fragment_user_list, container, false);
 
-
-        listGasweight = view.findViewById(R.id.listGasweight);
-        adapterItems = new ArrayAdapter<String>(getActivity(),R.layout.list_users,items);
-        listGasweight.setAdapter(adapterItems);
-
-
+        DBref3 =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("GasCan");
+        list = new ArrayList<String>();
         listGastrademark = view.findViewById(R.id.listGastrademark);
-        adapterItems = new ArrayAdapter<String>(getActivity(),R.layout.list_users,items2);
-        listGastrademark.setAdapter(adapterItems);
+        adapterItems3 =  new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item,list);
+        listGastrademark.setAdapter(adapterItems3);
+
+       listGastrademark.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-        listGasweight.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               String gasname = listGastrademark.getText().toString();
+               System.out.println("GasCan/"+gasname);
+               DBref2 =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("GasCan/"+gasname);
+
+               adapterItems3 =  new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item,list);
+               adapterItems3.notifyDataSetChanged();
+
+               fetchdata2();
+                list2.clear();
+               adapterItems2.notifyDataSetChanged();
+           }
+
+       });
+
+        list2 = new ArrayList<String>();
+        listgasproduct = view.findViewById(R.id.listGasproduct);
+        adapterItems2 =  new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item,list2);
+        listgasproduct.setAdapter(adapterItems2);
+
+        listgasproduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String itemgasweight = adapterView.getItemAtPosition(i).toString();
-                listGasweight.setText(itemgasweight);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
 
             }
         });
 
 
-        listGastrademark.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String itemgastrademark = adapterView.getItemAtPosition(i).toString();
-                listGastrademark.setText(itemgastrademark);
 
-            }
-        });
 
 
         customerName = view.findViewById(R.id.CustomerName);
@@ -155,7 +175,7 @@ public class UserList extends Fragment {
             }
 
         });
-
+        fetchdata();
 
         return view;
 
@@ -168,35 +188,38 @@ public class UserList extends Fragment {
         customerPhoneNumber = getActivity().findViewById(R.id.CustomerPhoneNumber);
         customeraddress = getActivity().findViewById(R.id.CustomerAddress);
         listGastrademark = getActivity().findViewById(R.id.listGastrademark);
-        listGasweight = getActivity().findViewById(R.id.listGasweight);
+        listgasproduct = getActivity().findViewById(R.id.listGasproduct);
         radiogroup = getActivity().findViewById(R.id.radioGroup);
         int radioID = radiogroup.getCheckedRadioButtonId();
         radiobtn = getActivity().findViewById(radioID);
         String gender = radiobtn.getText().toString();
-        DBref =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("User");
+
         String name = customerName.getText().toString().trim();
         String phone = customerPhoneNumber.getText().toString();
         int phonee = Integer.parseInt(phone);
         String address = customeraddress.getText().toString().trim();
 
+        String product = listgasproduct.getText().toString();
+        String gasname = listGastrademark.getText().toString();
         user.setName(name);
         user.setGender(gender);
         user.setPhoneNumber(phonee);
         user.setAddress(address);
+        user.setGastrademark(gasname);
+        user.setGasproduct(product);
+        user.setID(maxid);
 
-        user.setID(maxid+1);
 
-
-         DBref.child(String.valueOf(maxid+1)).setValue(user);
-
-        DBref.addValueEventListener(new ValueEventListener() {
+        DBref =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("User/");
+        DBref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists())
-                {
-                    maxid= (snapshot.getChildrenCount());
-                }
+               if(snapshot.exists()){
+                   int maxid = (int)snapshot.getChildrenCount();
+                   System.out.println("number: "+maxid);
+                   DBref.child(""+maxid).setValue(user);
 
+               }
 
 
             }
@@ -207,6 +230,40 @@ public class UserList extends Fragment {
             }
         });
 
+    }
+    public  void fetchdata(){
+
+        mListener = DBref3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot mydata: snapshot.getChildren()){
+                    list.add(mydata.getKey());
+                    adapterItems3.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    public  void fetchdata2(){
+
+        mListener = DBref2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot mydata: snapshot.getChildren()){
+                    list2.add(mydata.getValue().toString());
+                    adapterItems2.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 

@@ -52,15 +52,17 @@ public class CustomerInfo extends Fragment {
     Uri uri;
     FirebaseAuth mAuth;
     private StorageReference storageReference;
-    String name,phonenumber,address,gender,gasweight,gastrademark;
+    String name,phonenumber,address,gender,gasproduct,gastrademark;
     public CustomerInfo() {
 
     }
-    public CustomerInfo(String name,int phonenumber,String address,String gender) {
+    public CustomerInfo(String name,int phonenumber,String address,String gender,String gastrademark , String gasproduct ) {
         this.name = name;
         this.phonenumber= String.valueOf(phonenumber);
         this.address = address;
         this.gender = gender;
+        this.gastrademark = gastrademark;
+        this.gasproduct = gasproduct;
 
     }
 
@@ -115,14 +117,14 @@ public class CustomerInfo extends Fragment {
         TextView textview = view.findViewById(R.id.Name);
         TextView textview2 = view.findViewById(R.id.Phone);
         TextView textview3 = view.findViewById(R.id.Address);
-        TextView textview4 = view.findViewById(R.id.Gascanweight);
+        TextView textview4 = view.findViewById(R.id.Gascanproductname);
         TextView textview5 = view.findViewById(R.id.Gastrademark);
         TextView textview6 = view.findViewById(R.id.Gender);
         textview.setText(name);
         textview2.setText(phonenumber);
         textview3.setText(address);
         textview4.setText(gastrademark);
-        textview5.setText(gasweight);
+        textview5.setText(gasproduct);
         textview6.setText(gender);
 
             FloatingActionButton cambtn = view.findViewById(R.id.CamIcon);

@@ -76,7 +76,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
                 FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-                CustomerInfo fragment1 = new CustomerInfo(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender());
+                CustomerInfo fragment1 = new CustomerInfo(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(), user.getGasproduct());
                 transaction.replace(R.id.frame_layout, fragment1);
                 transaction.commit();
             }

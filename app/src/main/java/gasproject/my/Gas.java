@@ -7,6 +7,7 @@ public class Gas {
     private long ID;
 
     public Gas() {
+
     }
 //    public long getID() {
 //

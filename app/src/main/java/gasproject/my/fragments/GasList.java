@@ -22,6 +22,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -62,11 +64,12 @@ public class GasList extends Fragment {
     @TargetApi(Build.VERSION_CODES.M)
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        User user = new User();
+
 
         View view =  inflater.inflate(R.layout.fragment_gas_list, container, false);
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -148,32 +151,27 @@ public class GasList extends Fragment {
         listGastrademark = getActivity().findViewById(R.id.listGastrademark);
         listGasweight = getActivity().findViewById(R.id.listGasweight);
         listGascancolor = getActivity().findViewById(R.id.listGascancolor);
-        DBref =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("GasCan");
-        gas.setGascanweight(listGasweight.getText().toString());
-        gas.setGascanColor(listGascancolor.getText().toString());
+        String trademark = listGastrademark.getText().toString();
+        gas.setGascanTrademark(listGastrademark.getText().toString());
+        gas.setGascanweight(listGasweight.getText().toString()+"-"+listGascancolor.getText().toString());
+        DBref =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("GasCan/"+trademark+"/"+gas.getGascanweight().toString());
+       DBref.child("/"+trademark+"/"+gas.getGascanTrademark().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot snapshot) {
+               if(!snapshot.exists()){
+                   Toast.makeText(getContext(),"not exsits",Toast.LENGTH_LONG).show();
+                   DBref.child("").setValue(gas.getGascanweight());
+               }
+               else {
+                   Toast.makeText(getContext(),"exsits",Toast.LENGTH_LONG).show();
+               }
+           }
 
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
 
-        DBref.child(listGastrademark.getText().toString()+"/id: "+maxid).setValue(gas);
-        DBref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.exists())
-                {
-
-                    DBref.child(listGastrademark.getText().toString()+"/"+maxid+1).setValue(gas);
-
-                }
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+           }
+      });
     }
     public  void fetchdata(){
 

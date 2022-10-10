@@ -44,7 +44,7 @@
         android:id="@+id/titleGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customer Name: "
+        android:text="Customer Gender: "
         android:translationX="15dp"
         android:layout_marginTop="150dp"
         android:translationY="50dp"
@@ -98,13 +98,13 @@
         android:id="@+id/titleGasweight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gas can weight: "
+        android:text="Gas product: "
         android:translationX="15dp"
         android:layout_marginTop="320dp"
         android:translationY="30dp"
         android:textSize="20dp"/>
     <TextView
-        android:id="@+id/Gascanweight"
+        android:id="@+id/Gascanproductname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Customername"
@@ -121,15 +121,16 @@
         android:layout_marginTop="370dp"
         android:translationY="30dp"
         android:textSize="20dp"/>
+
     <TextView
         android:id="@+id/Gastrademark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="trademark"
-        android:translationX="240dp"
         android:layout_marginTop="370dp"
-        android:translationY="35dp"
-        android:textSize="15dp"/>
+        android:text="trademark"
+        android:textSize="15dp"
+        android:translationX="240dp"
+        android:translationY="35dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"

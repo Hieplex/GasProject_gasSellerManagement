@@ -9,7 +9,8 @@ public class User {
     private int PhoneNumber;
     private String Gender;
     private String Address;
-
+    private String Gastrademark;
+    private String Gasproduct;
     private ImageView img;
 
     public User(){
@@ -53,12 +54,22 @@ public class User {
     }
 
 
-    public ImageView getImage() {
-        return img;
+    public String  getGastrademark() {
+        return Gastrademark;
     }
 
-    public void setImage(ImageView img) {
-        this.img = img;
+    public void setGastrademark(String Gastrademark) {
+        this.Gastrademark = Gastrademark;
     }
+
+    public String getGasproduct() {
+        return Gasproduct;
+    }
+
+    public void setGasproduct(String Gasproduct) {
+        this.Gasproduct = Gasproduct;
+    }
+
+
 
 }

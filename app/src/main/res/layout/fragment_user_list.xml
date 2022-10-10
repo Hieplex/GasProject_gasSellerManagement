@@ -66,21 +66,37 @@
     </RadioGroup>
 
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/select2"
+        android:translationY="270dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        >
+        <AutoCompleteTextView
+            android:id="@+id/listGastrademark"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            />
 
+
+    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="@string/select"
-        android:translationY="270dp"
+        android:translationY="370dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         >
+
         <AutoCompleteTextView
-            android:id="@+id/listGasweight"
+            android:id="@+id/listGasproduct"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="none"
-            />
+            android:inputType="none" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
