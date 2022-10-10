@@ -59,7 +59,7 @@ public class CustomerInfoForManager extends Fragment {
     public CustomerInfoForManager() {
 
     }
-    public CustomerInfoForManager(String name, int phonenumber, String address, String gender, String gasweight, String gastrademark) {
+    public CustomerInfoForManager(String name, int phonenumber, String address, String gender) {
         this.name = name;
         this.phonenumber= String.valueOf(phonenumber);
         this.address = address;

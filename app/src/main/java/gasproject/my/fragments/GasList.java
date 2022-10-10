@@ -23,15 +23,20 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.protobuf.Value;
 
 import java.util.ArrayList;
 
+import gasproject.my.Gas;
 import gasproject.my.R;
 import gasproject.my.User;
 
@@ -45,25 +50,16 @@ public class GasList extends Fragment {
     AutoCompleteTextView listGasweight;
     AutoCompleteTextView listGastrademark;
     AutoCompleteTextView listGascancolor;
+    FirebaseFirestore firestore;
     ValueEventListener mListener;
      ArrayList<String> list;
      Spinner spinner;
 
-    User user;
     long maxid=1;
     private DatabaseReference  DBref;
     private DatabaseReference DBref2;
+
     @TargetApi(Build.VERSION_CODES.M)
-
-    private void closeKeyboard(EditText editText) {
-        View view2 = this.getActivity().getCurrentFocus();
-        if (view2 != null) {
-
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view2.getApplicationWindowToken(), 0);
-
-        }
-    }
 
 
     @Override
@@ -73,6 +69,7 @@ public class GasList extends Fragment {
         User user = new User();
 
         View view =  inflater.inflate(R.layout.fragment_gas_list, container, false);
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         DBref2 =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("GasAirTankColor");
         list = new ArrayList<String>();
          listGascancolor = view.findViewById(R.id.listGascancolor);
@@ -132,45 +129,39 @@ public class GasList extends Fragment {
         pushdata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 PushData();
-
-
+                maxid++;
             }
 
         });
 
         fetchdata();
+
         return view;
 
     }
 
     private void PushData() {
 
-        User user = new User();
-
+        Gas gas = new Gas();
+        String gastrademark = listGastrademark.getText().toString();
         listGastrademark = getActivity().findViewById(R.id.listGastrademark);
         listGasweight = getActivity().findViewById(R.id.listGasweight);
         listGascancolor = getActivity().findViewById(R.id.listGascancolor);
         DBref =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("GasCan");
-        user.setGascanweight(listGasweight.getText().toString());
-        user.setGascanTrademark(listGastrademark.getText().toString());
-        user.setGascanColor(listGascancolor.getText().toString());
-        for(int i =100 ;i<=maxid;i++)
-        {
-            user.setID(i);
-        }
+        gas.setGascanweight(listGasweight.getText().toString());
+        gas.setGascanColor(listGascancolor.getText().toString());
 
 
-        DBref.child(user.getGascanTrademark()+"/"+user.getID()).setValue(user);
-
+        DBref.child(listGastrademark.getText().toString()+"/id: "+maxid).setValue(gas);
         DBref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists())
+                if (!snapshot.exists())
                 {
 
-                    maxid= (snapshot.getChildrenCount());
+                    DBref.child(listGastrademark.getText().toString()+"/"+maxid+1).setValue(gas);
+
                 }
 
 
@@ -201,5 +192,6 @@ public class GasList extends Fragment {
             }
         });
     }
+
 
 }

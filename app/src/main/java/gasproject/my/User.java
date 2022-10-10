@@ -9,9 +9,7 @@ public class User {
     private int PhoneNumber;
     private String Gender;
     private String Address;
-    private String Gascanweight;
-    private String GascanTrademark;
-    private String GascanColor;
+
     private ImageView img;
 
     public User(){
@@ -53,26 +51,7 @@ public class User {
     public void setAddress(String Address) {
         this.Address = Address;
     }
-    public String getGascanweight() {
-        return Gascanweight;
-    }
-    public void setGascanweight(String Gascanweight) {
-        this.Gascanweight = Gascanweight;
-    }
 
-    public String getGascanTrademark() {
-        return GascanTrademark;
-    }
-
-    public void setGascanTrademark(String GascanTrademark) {
-        this.GascanTrademark = GascanTrademark;
-    }
-    public String getGascanColor() {
-        return GascanColor;
-    }
-    public void setGascanColor(String GascanColor) {
-        this.GascanColor = GascanColor;
-    }
 
     public ImageView getImage() {
         return img;

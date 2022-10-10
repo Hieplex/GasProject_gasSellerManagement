@@ -183,8 +183,7 @@ public class UserList extends Fragment {
         user.setGender(gender);
         user.setPhoneNumber(phonee);
         user.setAddress(address);
-        user.setGascanweight(listGasweight.getText().toString());
-        user.setGascanTrademark(listGastrademark.getText().toString());
+
         user.setID(maxid+1);
 
 

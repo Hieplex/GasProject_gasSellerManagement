@@ -5,7 +5,7 @@
     <string name="shipper">Shipper</string>
     <string name="manager">manager</string>
     <string name="gas">Gas</string>
-    <string name="select">Loại Bình Ga</string>
+    <string name="select">Chọn Bình Ga</string>
     <string name="select2">Thương Hiệu</string>
     <string name="select3">Màu Sắc</string>
 </resources>
