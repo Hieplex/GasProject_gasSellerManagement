@@ -54,18 +54,19 @@ public class CustomerInfoForManager extends Fragment {
     Uri uri;
     FirebaseAuth mAuth;
     private StorageReference storageReference;
-    String name,phonenumber,address,gender,gasproduct,gastrademark;
+    String name,phonenumber,address,gender,gasproduct,gastrademark,status;
     Image img;
     public CustomerInfoForManager() {
 
     }
-    public CustomerInfoForManager(String name, int phonenumber, String address, String gender,String gastrademark,String gasproduct) {
+    public CustomerInfoForManager(String name, int phonenumber, String address, String gender,String gastrademark,String gasproduct,String status) {
         this.name = name;
         this.phonenumber= String.valueOf(phonenumber);
         this.address = address;
         this.gender = gender;
         this.gasproduct = gasproduct;
         this.gastrademark = gastrademark;
+        this.status = status;
         this.img = img;
     }
 

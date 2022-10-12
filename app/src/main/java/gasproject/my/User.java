@@ -14,7 +14,8 @@ public class User {
     private ImageView img;
     private String Status;
 
-    public User(){
+    public User (){
+
     }
 
     public String getName() {
@@ -32,7 +33,7 @@ public class User {
         this.Gender = Gender;
     }
 
-    public long getID() {
+    public Long getID() {
         return ID;
     }
 

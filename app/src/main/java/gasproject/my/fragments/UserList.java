@@ -59,7 +59,7 @@ public class UserList extends Fragment {
     ArrayList<String> list2;
     ValueEventListener mListener;
     User user;
-    long maxid=0;
+    int maxid=0;
     DatabaseReference DBref;
     DatabaseReference DBref2;
     DatabaseReference DBref3;
@@ -218,6 +218,7 @@ public class UserList extends Fragment {
                if(snapshot.exists()){
                    int maxid = (int)snapshot.getChildrenCount();
                    System.out.println("number: "+maxid);
+                   user.setID(maxid);
                    DBref.child(""+maxid).setValue(user);
 
                }
@@ -230,7 +231,6 @@ public class UserList extends Fragment {
 
             }
         });
-
     }
     public  void fetchdata(){
 

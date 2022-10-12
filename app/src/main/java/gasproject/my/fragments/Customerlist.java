@@ -81,6 +81,27 @@ public class Customerlist extends Fragment implements RecycleViewInterface {
 
     }
 
+    private User castToUser(DataSnapshot snap){
+        String name = snap.child("name").toString();
+        String address = snap.child("address").toString();
+        String phoneNumber = snap.child("phoneNumber").toString();
+        String gender = snap.child("gender").toString();
+        String id = snap.child("id").toString();
+        String status = snap.child("status").toString();
+        String gasproduct = snap.child("gasproduct").toString();
+        String gastrademark = snap.child("gastrademark").toString();
+        User user = new User();
+        user.setID(Integer.parseInt(id));
+        user.setName(name);
+        user.setGender(gender);
+        user.setStatus(status);
+        user.setGastrademark(gastrademark);
+        user.setGasproduct(gasproduct);
+        user.setPhoneNumber(Integer.parseInt(phoneNumber));
+        user.setAddress(address);
+        return user;
+    }
+
 
     @Override
     public void onItemClick(int position) {

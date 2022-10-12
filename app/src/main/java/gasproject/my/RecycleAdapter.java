@@ -69,6 +69,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user = userlist.get(position);
+        System.out.println("hi" +user.getID());
 
         holder.nameText.setText(user.getName());
 
@@ -78,8 +79,10 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                System.out.println("hi2 " +user.getID());
+
                 FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-                CustomerInfo fragment1 = new CustomerInfo(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(), user.getGasproduct(),user.getStatus());
+                CustomerInfo fragment1 = new CustomerInfo(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(), user.getGasproduct(),user.getStatus(),user.getID());
                 transaction.replace(R.id.frame_layout, fragment1);
                 transaction.commit();
             }

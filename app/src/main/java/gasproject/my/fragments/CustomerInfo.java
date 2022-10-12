@@ -52,26 +52,30 @@ public class CustomerInfo extends Fragment {
     private String mParam1;
     private String mParam2;
     private ImageView capimg;
+    DatabaseReference DBref;
      Button upimgbtn;
     RecyclerView.Adapter adapter;
     ActivityMainBinding binding;
     Uri uri;
     FirebaseAuth mAuth;
     private StorageReference storageReference;
-    DatabaseReference DBref;
-    String name,phonenumber,address,gender,gasproduct,gastrademark,status;
+
+    String name,address,gender,gasproduct,gastrademark,status;
+    int phonenumber;
+    long ID;
+
     public CustomerInfo() {
 
     }
-    public CustomerInfo(String name,int phonenumber,String address,String gender,String gastrademark , String gasproduct, String Status ) {
+    public CustomerInfo(String name,int phonenumber,String address,String gender,String gastrademark , String gasproduct, String Status,long ID ) {
         this.name = name;
-        this.phonenumber= String.valueOf(phonenumber);
+        this.phonenumber= phonenumber;
         this.address = address;
         this.gender = gender;
         this.gastrademark = gastrademark;
         this.gasproduct = gasproduct;
         this.status = Status;
-
+        this.ID = ID;
     }
 
 
@@ -98,23 +102,9 @@ public class CustomerInfo extends Fragment {
 
 
             } else {
-                signInAnonymously();
+
             }
         }
-    }
-    private void signInAnonymously() {
-        mAuth.signInAnonymously().addOnSuccessListener(getActivity(), new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        //???///
-                    }
-                })
-                .addOnFailureListener(getActivity(), new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        Log.e("MainActivity", "signFailed****** ", exception);
-                    }
-                });
     }
 
     @Override
@@ -129,7 +119,7 @@ public class CustomerInfo extends Fragment {
         TextView textview5 = view.findViewById(R.id.Gastrademark);
         TextView textview6 = view.findViewById(R.id.Gender);
         textview.setText(name);
-        textview2.setText(phonenumber);
+        textview2.setText(String.valueOf(phonenumber));
         textview3.setText(address);
         textview4.setText(gastrademark);
         textview5.setText(gasproduct);
@@ -161,19 +151,22 @@ public class CustomerInfo extends Fragment {
             @Override
             public void onClick(View view) {
                 oncaptureImg(data);
-                DBref =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("User/");
-                DBref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = new User();
+                user.setName(name);
+                user.setID(ID);
+                user.setAddress(address);
+                user.setGasproduct(gasproduct);
+                user.setGastrademark(gastrademark);
+                user.setGender(gender);
+                user.setPhoneNumber(phonenumber);
+                user.setStatus("complete");
+                DBref = FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("User");
+                String id = String.valueOf(ID);
+                System.out.println("so : "+ID);
+                DBref.child(id).setValue(user);
 
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
+            }
+        });
     }
     public void oncaptureImg(Intent data){
         Bitmap photo = (Bitmap)data.getExtras().get("data");

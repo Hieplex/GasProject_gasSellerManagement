@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,12 +31,13 @@ public class RecycleAdapterManager extends RecyclerView.Adapter<RecycleAdapterMa
     }
     public class MyViewHolder extends  RecyclerView.ViewHolder{
         private TextView nameText;
-
+        private TextView statusText;
+        private CardView layout;
         public MyViewHolder(final View view,RecycleViewInterface recycleViewInterface){
             super(view);
             nameText = view.findViewById(R.id.name);
-
-
+            statusText = view.findViewById(R.id.status);
+            layout = view.findViewById(R.id.listname);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -70,13 +72,13 @@ public class RecycleAdapterManager extends RecyclerView.Adapter<RecycleAdapterMa
         User user = userlist.get(position);
 
         holder.nameText.setText(user.getName());
-
-        holder.nameText.setOnClickListener(new View.OnClickListener() {
+        holder.statusText.setText(user.getStatus());
+        holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
                 FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-                CustomerInfoForManager fragment1 = new CustomerInfoForManager(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(),user.getGasproduct());
+                CustomerInfoForManager fragment1 = new CustomerInfoForManager(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(),user.getGasproduct(),user.getStatus());
                 transaction.replace(R.id.frame_layout, fragment1);
                 transaction.commit();
             }
