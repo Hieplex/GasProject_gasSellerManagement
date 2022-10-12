@@ -207,6 +207,7 @@ public class UserList extends Fragment {
         user.setAddress(address);
         user.setGastrademark(gasname);
         user.setGasproduct(product);
+        user.setStatus("not complete");
         user.setID(maxid);
 
 

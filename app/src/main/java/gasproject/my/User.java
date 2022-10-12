@@ -12,6 +12,7 @@ public class User {
     private String Gastrademark;
     private String Gasproduct;
     private ImageView img;
+    private String Status;
 
     public User(){
     }
@@ -69,7 +70,12 @@ public class User {
     public void setGasproduct(String Gasproduct) {
         this.Gasproduct = Gasproduct;
     }
+    public String getStatus() {
+        return Status;
+    }
 
-
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
 
 }

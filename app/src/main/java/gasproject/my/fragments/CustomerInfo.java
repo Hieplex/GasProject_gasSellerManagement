@@ -25,6 +25,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -32,6 +37,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 
 import gasproject.my.R;
+import gasproject.my.User;
 import gasproject.my.databinding.ActivityMainBinding;
 
 
@@ -52,17 +58,19 @@ public class CustomerInfo extends Fragment {
     Uri uri;
     FirebaseAuth mAuth;
     private StorageReference storageReference;
-    String name,phonenumber,address,gender,gasproduct,gastrademark;
+    DatabaseReference DBref;
+    String name,phonenumber,address,gender,gasproduct,gastrademark,status;
     public CustomerInfo() {
 
     }
-    public CustomerInfo(String name,int phonenumber,String address,String gender,String gastrademark , String gasproduct ) {
+    public CustomerInfo(String name,int phonenumber,String address,String gender,String gastrademark , String gasproduct, String Status ) {
         this.name = name;
         this.phonenumber= String.valueOf(phonenumber);
         this.address = address;
         this.gender = gender;
         this.gastrademark = gastrademark;
         this.gasproduct = gasproduct;
+        this.status = Status;
 
     }
 
@@ -153,9 +161,18 @@ public class CustomerInfo extends Fragment {
             @Override
             public void onClick(View view) {
                 oncaptureImg(data);
+                DBref =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("User/");
+                DBref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-            }
-        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
     }
     public void oncaptureImg(Intent data){

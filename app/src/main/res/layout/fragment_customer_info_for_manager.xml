@@ -91,27 +91,38 @@
         android:id="@+id/titleGasweight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gas can weight: "
+        android:text="Gas Product: "
         android:translationX="15dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="370dp"
         android:translationY="110dp"
         android:textSize="20dp"/>
     <TextView
-        android:id="@+id/Gascanweight"
+        android:id="@+id/Gascanproduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="weigh"
         android:translationX="220dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="370dp"
         android:translationY="110dp"
         android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/GasStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="370dp"
+        android:text="status"
+        android:textSize="15dp"
+        android:translationX="200dp"
+        android:translationY="180dp" />
+
     <TextView
         android:id="@+id/titleGastrademark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gas can trademark: "
         android:translationX="15dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="310dp"
         android:translationY="120dp"
         android:textSize="20dp"/>
     <TextView
@@ -120,7 +131,7 @@
         android:layout_height="wrap_content"
         android:text="trademark"
         android:translationX="240dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="310dp"
         android:translationY="125dp"
         android:textSize="15dp"/>
 

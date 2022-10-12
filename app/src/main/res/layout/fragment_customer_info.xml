@@ -16,12 +16,7 @@
         android:layout_marginTop="50dp"
         android:textSize="20dp"
         />
-    <ImageView
-        android:id="@+id/Img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:src="@tools:sample/avatars"
-        android:translationX="200dp"/>
+
     <TextView
         android:id="@+id/titleName"
         android:layout_width="wrap_content"
@@ -132,6 +127,7 @@
         android:translationX="240dp"
         android:translationY="35dp" />
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -147,8 +143,8 @@
         android:id="@+id/CapImg"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:translationX="40dp"
-        android:translationY="450dp"/>
+        android:translationX="200dp"
+        />
 
     <Button
         android:id="@+id/btnpushimg"

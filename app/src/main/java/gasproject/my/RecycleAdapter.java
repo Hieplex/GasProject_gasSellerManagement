@@ -30,11 +30,12 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
     }
     public class MyViewHolder extends  RecyclerView.ViewHolder{
         private TextView nameText;
+        private TextView status;
 
         public MyViewHolder(final View view,RecycleViewInterface recycleViewInterface){
             super(view);
             nameText = view.findViewById(R.id.name);
-
+            status = view.findViewById(R.id.status);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -71,12 +72,14 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
 
         holder.nameText.setText(user.getName());
 
+        holder.status.setText(user.getStatus());
+
         holder.nameText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
                 FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-                CustomerInfo fragment1 = new CustomerInfo(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(), user.getGasproduct());
+                CustomerInfo fragment1 = new CustomerInfo(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(), user.getGasproduct(),user.getStatus());
                 transaction.replace(R.id.frame_layout, fragment1);
                 transaction.commit();
             }
