@@ -41,21 +41,27 @@ public class CustomerListForManager extends Fragment implements RecycleViewInter
         recyclerview = view.findViewById(R.id.recyclerView);
         setUserInfo();
         setAdapter();
-        databasereference = FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("User");
+        databasereference = FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("User");
+
         recyclerview.setHasFixedSize(true);
         userlist = new ArrayList<>();
         recyclerview.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         adapter = new RecycleAdapterManager(this.getActivity(),userlist,this);
         recyclerview.setAdapter(adapter);
 
-        databasereference.addValueEventListener(new ValueEventListener() {
+        databasereference.orderByChild("status").equalTo("complete").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot datasnapshot : snapshot.getChildren()){
-                    User user = datasnapshot.getValue(User.class);
-                    userlist.add(user);
+                if(snapshot!=null && snapshot.getChildren()!=null &&
+                        snapshot.getChildren().iterator().hasNext()){
+                    for(DataSnapshot datasnapshot : snapshot.getChildren()){
+                        User user = datasnapshot.getValue(User.class);
+                        userlist.add(user);
+                    }
+                    adapter.notifyDataSetChanged();
+                }else {
+                    //Username does not exist
                 }
-                adapter.notifyDataSetChanged();
             }
 
             @Override

@@ -35,6 +35,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import gasproject.my.R;
 import gasproject.my.User;
@@ -57,6 +60,8 @@ public class CustomerInfo extends Fragment {
     RecyclerView.Adapter adapter;
     ActivityMainBinding binding;
     Uri uri;
+    SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+    String currentDateandTime = sdf.format(new Date());
     FirebaseAuth mAuth;
     private StorageReference storageReference;
 
@@ -160,6 +165,7 @@ public class CustomerInfo extends Fragment {
                 user.setGender(gender);
                 user.setPhoneNumber(phonenumber);
                 user.setStatus("complete");
+                user.setDateTime(currentDateandTime);
                 DBref = FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("User");
                 String id = String.valueOf(ID);
                 System.out.println("so : "+ID);

@@ -14,10 +14,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.bottomnavigation.BottomNavigationView ;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import gasproject.my.fragments.AdminView;
+import gasproject.my.fragments.CustomerInfo;
 import gasproject.my.fragments.Customerlist;
 import gasproject.my.fragments.GasList;
 import gasproject.my.fragments.GasProductList;
@@ -29,11 +34,12 @@ public class MainActivity extends AppCompatActivity {
     String[] items = {"12kg","45kg","48kg"};
     ArrayAdapter<String> adapterItems;
     AutoCompleteTextView listgas;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mAuth = FirebaseAuth.getInstance();
 
         BottomNavigationView bottomnv = findViewById(R.id.bottomnavigationView);
         bottomnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -49,7 +55,24 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case R.id.Manager:
-                        loadfrag(new AdminView(),1);
+                        String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        System.out.println(""+currentuser);
+                        if (currentuser.equals("5awpoOpqBDOfO8erhnjseocaEXm1")) {
+
+                            FragmentTransaction transaction = MainActivity.this.getSupportFragmentManager().beginTransaction();
+                            AdminView fragment1 = new AdminView();
+                            transaction.replace(R.id.frame_layout, fragment1);
+                            transaction.commit();
+
+
+                        } else {
+                            FragmentTransaction transaction = MainActivity.this.getSupportFragmentManager().beginTransaction();
+                            GasProductList fragment2 = new GasProductList();
+                            transaction.replace(R.id.frame_layout, fragment2);
+                            transaction.commit();
+                            Toast.makeText(MainActivity.this,"Account don't have authorization to view this page",Toast.LENGTH_SHORT).show();
+                        }
+
                         break;
 
                     case R.id.Gas:

@@ -3,6 +3,8 @@ package gasproject.my;
 import android.media.Image;
 import android.widget.ImageView;
 
+import com.google.type.DateTime;
+
 public class User {
     private String Name;
     private long ID;
@@ -13,6 +15,7 @@ public class User {
     private String Gasproduct;
     private ImageView img;
     private String Status;
+    private String DateTime;
 
     public User (){
 
@@ -77,6 +80,13 @@ public class User {
 
     public void setStatus(String Status) {
         this.Status = Status;
+    }
+    public String getDateTime() {
+        return DateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.DateTime = dateTime;
     }
 
 }

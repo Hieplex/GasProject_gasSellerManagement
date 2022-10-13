@@ -110,11 +110,20 @@
         android:id="@+id/GasStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="340dp"
         android:text="status"
         android:textSize="15dp"
-        android:translationX="200dp"
-        android:translationY="180dp" />
+        android:translationX="120dp"
+        android:translationY="185dp" />
+    <TextView
+        android:id="@+id/Datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:text="Datetime"
+        android:textSize="15dp"
+        android:translationX="120dp"
+        android:translationY="225dp" />
 
     <TextView
         android:id="@+id/titleGastrademark"
@@ -149,8 +158,17 @@
         android:layout_height="wrap_content"
         android:text="Status: "
         android:translationX="15dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="340dp"
         android:translationY="180dp"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/titleDatetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: "
+        android:translationX="15dp"
+        android:layout_marginTop="340dp"
+        android:translationY="220dp"
         android:textSize="20dp"/>
     <Button
         android:id="@+id/btnEditinfo"

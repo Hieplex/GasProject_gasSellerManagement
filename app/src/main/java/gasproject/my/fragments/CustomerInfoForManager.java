@@ -54,12 +54,12 @@ public class CustomerInfoForManager extends Fragment {
     Uri uri;
     FirebaseAuth mAuth;
     private StorageReference storageReference;
-    String name,phonenumber,address,gender,gasproduct,gastrademark,status;
+    String name,phonenumber,address,gender,gasproduct,gastrademark,status,datetime;
     Image img;
     public CustomerInfoForManager() {
 
     }
-    public CustomerInfoForManager(String name, int phonenumber, String address, String gender,String gastrademark,String gasproduct,String status) {
+    public CustomerInfoForManager(String name, int phonenumber, String address, String gender,String gastrademark,String gasproduct,String status,String datetime) {
         this.name = name;
         this.phonenumber= String.valueOf(phonenumber);
         this.address = address;
@@ -68,6 +68,7 @@ public class CustomerInfoForManager extends Fragment {
         this.gastrademark = gastrademark;
         this.status = status;
         this.img = img;
+        this.datetime = datetime;
     }
 
 
@@ -105,6 +106,8 @@ public class CustomerInfoForManager extends Fragment {
         TextView textview4 = view.findViewById(R.id.Gascanproduct);
         TextView textview5 = view.findViewById(R.id.Gastrademark);
         TextView textview6 = view.findViewById(R.id.Gender);
+        TextView textView7 = view.findViewById(R.id.GasStatus);
+        TextView textView8 = view.findViewById(R.id.Datetime);
         ImageView imgview = view.findViewById(R.id.CapImg);
         textview.setText(name);
         textview2.setText(phonenumber);
@@ -112,7 +115,8 @@ public class CustomerInfoForManager extends Fragment {
         textview4.setText(gastrademark);
         textview5.setText(gasproduct);
         textview6.setText(gender);
-
+        textView7.setText(status);
+        textView8.setText(datetime);
         storageReference = FirebaseStorage.getInstance().getReference();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference imgref = storage.getReference()

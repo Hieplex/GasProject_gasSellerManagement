@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="345dp"
+            android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
@@ -34,20 +34,23 @@
                 android:text="test"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="status"
-                android:textColor="@color/black"
-                android:textSize="18dp"
                 android:textStyle="bold"
-                android:translationX="150dp" />
+                android:translationX="30dp"
+                />
+
+
 
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="status"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:translationX="220dp"
+            android:translationY="-25dp"/>
 
 
     </LinearLayout>

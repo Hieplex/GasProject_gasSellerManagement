@@ -33,7 +33,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import gasproject.my.R;
 import gasproject.my.User;
@@ -209,6 +212,9 @@ public class UserList extends Fragment {
         user.setGasproduct(product);
         user.setStatus("not complete");
         user.setID(maxid);
+        SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+        user.setDateTime(currentDateandTime);
 
 
         DBref =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("User/");
@@ -218,6 +224,7 @@ public class UserList extends Fragment {
                if(snapshot.exists()){
                    int maxid = (int)snapshot.getChildrenCount();
                    System.out.println("number: "+maxid);
+                   System.out.println("number: "+currentDateandTime);
                    user.setID(maxid);
                    DBref.child(""+maxid).setValue(user);
 

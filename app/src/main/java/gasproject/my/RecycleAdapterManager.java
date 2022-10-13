@@ -78,7 +78,7 @@ public class RecycleAdapterManager extends RecyclerView.Adapter<RecycleAdapterMa
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
                 FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-                CustomerInfoForManager fragment1 = new CustomerInfoForManager(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(),user.getGasproduct(),user.getStatus());
+                CustomerInfoForManager fragment1 = new CustomerInfoForManager(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(),user.getGasproduct(),user.getStatus(),user.getDateTime());
                 transaction.replace(R.id.frame_layout, fragment1);
                 transaction.commit();
             }

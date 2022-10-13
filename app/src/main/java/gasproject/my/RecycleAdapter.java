@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,12 +32,12 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
     public class MyViewHolder extends  RecyclerView.ViewHolder{
         private TextView nameText;
         private TextView status;
-
+        private CardView layout;
         public MyViewHolder(final View view,RecycleViewInterface recycleViewInterface){
             super(view);
             nameText = view.findViewById(R.id.name);
             status = view.findViewById(R.id.status);
-
+            layout = view.findViewById(R.id.listname);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -75,7 +76,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
 
         holder.status.setText(user.getStatus());
 
-        holder.nameText.setOnClickListener(new View.OnClickListener() {
+        holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();

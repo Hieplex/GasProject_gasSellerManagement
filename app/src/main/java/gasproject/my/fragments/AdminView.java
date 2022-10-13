@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import gasproject.my.R;
 
@@ -25,6 +26,7 @@ public class AdminView extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_admin_view, container, false);
+
         View view  = inflater.inflate(R.layout.fragment_admin_view,container,false);
         return view ;
     }
@@ -33,6 +35,7 @@ public class AdminView extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
         ImageButton shipper = view.findViewById(R.id.imageViewshipper);
 

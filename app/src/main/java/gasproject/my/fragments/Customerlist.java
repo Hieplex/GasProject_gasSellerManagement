@@ -53,14 +53,19 @@ public class Customerlist extends Fragment implements RecycleViewInterface {
         adapter = new RecycleAdapter(this.getActivity(),userlist,this);
         recyclerview.setAdapter(adapter);
 
-        databasereference.addValueEventListener(new ValueEventListener() {
+        databasereference.orderByChild("status").equalTo("not complete").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot datasnapshot : snapshot.getChildren()){
-                    User user = datasnapshot.getValue(User.class);
-                    userlist.add(user);
+                if(snapshot!=null && snapshot.getChildren()!=null &&
+                        snapshot.getChildren().iterator().hasNext()){
+                    for(DataSnapshot datasnapshot : snapshot.getChildren()){
+                        User user = datasnapshot.getValue(User.class);
+                        userlist.add(user);
+                    }
+                    adapter.notifyDataSetChanged();
+                }else {
+                    //Username does not exist
                 }
-                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -79,27 +84,6 @@ public class Customerlist extends Fragment implements RecycleViewInterface {
     private void setUserInfo() {
 
 
-    }
-
-    private User castToUser(DataSnapshot snap){
-        String name = snap.child("name").toString();
-        String address = snap.child("address").toString();
-        String phoneNumber = snap.child("phoneNumber").toString();
-        String gender = snap.child("gender").toString();
-        String id = snap.child("id").toString();
-        String status = snap.child("status").toString();
-        String gasproduct = snap.child("gasproduct").toString();
-        String gastrademark = snap.child("gastrademark").toString();
-        User user = new User();
-        user.setID(Integer.parseInt(id));
-        user.setName(name);
-        user.setGender(gender);
-        user.setStatus(status);
-        user.setGastrademark(gastrademark);
-        user.setGasproduct(gasproduct);
-        user.setPhoneNumber(Integer.parseInt(phoneNumber));
-        user.setAddress(address);
-        return user;
     }
 
 

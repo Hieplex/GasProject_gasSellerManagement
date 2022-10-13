@@ -23,7 +23,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="300dp"
         android:gravity="center"
-        android:text="shipper"
+        android:text="New Customer"
         android:textSize="30dp"
         android:textStyle="bold" />
 
@@ -44,6 +44,6 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="30dp"
-        android:text="manager" />
+        android:text="Customer List" />
 
 </FrameLayout>
