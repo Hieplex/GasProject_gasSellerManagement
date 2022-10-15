@@ -16,7 +16,7 @@ public class User {
     private ImageView img;
     private String Status;
     private String DateTime;
-
+    private String Deliverydatetime;
     public User (){
 
     }
@@ -84,9 +84,14 @@ public class User {
     public String getDateTime() {
         return DateTime;
     }
-
     public void setDateTime(String dateTime) {
         this.DateTime = dateTime;
+    }
+    public String getDeliverydatetime() {
+        return Deliverydatetime;
+    }
+    public void setDeliverydatetime(String deliverydatetime) {
+        this.Deliverydatetime = deliverydatetime;
     }
 
 }

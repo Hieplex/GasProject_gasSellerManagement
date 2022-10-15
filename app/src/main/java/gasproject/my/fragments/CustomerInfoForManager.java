@@ -54,12 +54,12 @@ public class CustomerInfoForManager extends Fragment {
     Uri uri;
     FirebaseAuth mAuth;
     private StorageReference storageReference;
-    String name,phonenumber,address,gender,gasproduct,gastrademark,status,datetime;
+    String name,phonenumber,address,gender,gasproduct,gastrademark,status,datetime,Deliverydatetime;
     Image img;
     public CustomerInfoForManager() {
 
     }
-    public CustomerInfoForManager(String name, int phonenumber, String address, String gender,String gastrademark,String gasproduct,String status,String datetime) {
+    public CustomerInfoForManager(String name, int phonenumber, String address, String gender,String gastrademark,String gasproduct,String status,String datetime,String Deliverydatetime) {
         this.name = name;
         this.phonenumber= String.valueOf(phonenumber);
         this.address = address;
@@ -69,6 +69,7 @@ public class CustomerInfoForManager extends Fragment {
         this.status = status;
         this.img = img;
         this.datetime = datetime;
+        this.Deliverydatetime = Deliverydatetime;
     }
 
 
@@ -103,11 +104,12 @@ public class CustomerInfoForManager extends Fragment {
         TextView textview = view.findViewById(R.id.Name);
         TextView textview2 = view.findViewById(R.id.Phone);
         TextView textview3 = view.findViewById(R.id.Address);
-        TextView textview4 = view.findViewById(R.id.Gascanproduct);
-        TextView textview5 = view.findViewById(R.id.Gastrademark);
+        TextView textview4 = view.findViewById(R.id.Gastrademark);
+        TextView textview5 = view.findViewById(R.id.Gascanproduct);
         TextView textview6 = view.findViewById(R.id.Gender);
         TextView textView7 = view.findViewById(R.id.GasStatus);
         TextView textView8 = view.findViewById(R.id.Datetime);
+        TextView textView9 = view.findViewById(R.id.Deliverytime);
         ImageView imgview = view.findViewById(R.id.CapImg);
         textview.setText(name);
         textview2.setText(phonenumber);
@@ -115,8 +117,10 @@ public class CustomerInfoForManager extends Fragment {
         textview4.setText(gastrademark);
         textview5.setText(gasproduct);
         textview6.setText(gender);
-        textView7.setText(status);
+        textView7.setText("Hoàn Thành");
+        textView7.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.correct, 0);
         textView8.setText(datetime);
+        textView9.setText(Deliverydatetime);
         storageReference = FirebaseStorage.getInstance().getReference();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference imgref = storage.getReference()

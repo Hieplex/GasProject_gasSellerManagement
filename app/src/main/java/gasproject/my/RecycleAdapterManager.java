@@ -72,13 +72,16 @@ public class RecycleAdapterManager extends RecyclerView.Adapter<RecycleAdapterMa
         User user = userlist.get(position);
 
         holder.nameText.setText(user.getName());
-        holder.statusText.setText(user.getStatus());
+        if(user.getStatus().equals("complete"))
+        {
+            holder.statusText.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.correct,0,0,0);
+        }
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
                 FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-                CustomerInfoForManager fragment1 = new CustomerInfoForManager(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(),user.getGasproduct(),user.getStatus(),user.getDateTime());
+                CustomerInfoForManager fragment1 = new CustomerInfoForManager(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(),user.getGasproduct(),user.getStatus(),user.getDateTime(),user.getDeliverydatetime());
                 transaction.replace(R.id.frame_layout, fragment1);
                 transaction.commit();
             }

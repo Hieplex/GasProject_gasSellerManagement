@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import gasproject.my.R;
 
@@ -19,6 +20,7 @@ public class GasProductList extends Fragment {
 
        // return inflater.inflate(R.layout.fragment_home, container, false);
         View view  = inflater.inflate(R.layout.fragment_gasproductlist,container,false);
+
         return view ;
     }
 

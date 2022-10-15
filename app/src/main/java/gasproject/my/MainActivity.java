@@ -56,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.Manager:
                         String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        System.out.println(""+currentuser);
-                        if (currentuser.equals("5awpoOpqBDOfO8erhnjseocaEXm1")) {
-
+                        if (currentuser.equals("xaMkJu1xCxYoN588r0vsIkhTEvP2")) {
                             FragmentTransaction transaction = MainActivity.this.getSupportFragmentManager().beginTransaction();
                             AdminView fragment1 = new AdminView();
                             transaction.replace(R.id.frame_layout, fragment1);
@@ -66,17 +64,34 @@ public class MainActivity extends AppCompatActivity {
 
 
                         } else {
+                            Toast.makeText(MainActivity.this,"Account don't have authorization to view this page",Toast.LENGTH_SHORT).show();
                             FragmentTransaction transaction = MainActivity.this.getSupportFragmentManager().beginTransaction();
                             GasProductList fragment2 = new GasProductList();
                             transaction.replace(R.id.frame_layout, fragment2);
                             transaction.commit();
-                            Toast.makeText(MainActivity.this,"Account don't have authorization to view this page",Toast.LENGTH_SHORT).show();
+
                         }
 
                         break;
 
                     case R.id.Gas:
-                        loadfrag(new GasList(),1);
+                        String currentuser2 = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        if (currentuser2.equals("xaMkJu1xCxYoN588r0vsIkhTEvP2")) {
+                            FragmentTransaction transaction = MainActivity.this.getSupportFragmentManager().beginTransaction();
+                            GasList fragment1 = new GasList();
+                            transaction.replace(R.id.frame_layout, fragment1);
+                            transaction.commit();
+
+
+                        } else {
+                            Toast.makeText(MainActivity.this,"Account don't have authorization to view this page",Toast.LENGTH_SHORT).show();
+                            FragmentTransaction transaction = MainActivity.this.getSupportFragmentManager().beginTransaction();
+                            GasProductList fragment2 = new GasProductList();
+                            transaction.replace(R.id.frame_layout, fragment2);
+                            transaction.commit();
+
+                        }
+
                         break;
                 }
                 return true ;

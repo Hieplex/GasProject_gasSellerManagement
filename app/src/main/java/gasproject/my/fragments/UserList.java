@@ -66,6 +66,8 @@ public class UserList extends Fragment {
     DatabaseReference DBref;
     DatabaseReference DBref2;
     DatabaseReference DBref3;
+    SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+    String currentDateandTime = sdf.format(new Date());
     @TargetApi(Build.VERSION_CODES.M)
 
     private void closeKeyboard(EditText editText) {
@@ -212,10 +214,8 @@ public class UserList extends Fragment {
         user.setGasproduct(product);
         user.setStatus("not complete");
         user.setID(maxid);
-        SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        String currentDateandTime = sdf.format(new Date());
         user.setDateTime(currentDateandTime);
-
+        user.setDeliverydatetime("");
 
         DBref =  FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("User/");
         DBref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -223,8 +223,7 @@ public class UserList extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                if(snapshot.exists()){
                    int maxid = (int)snapshot.getChildrenCount();
-                   System.out.println("number: "+maxid);
-                   System.out.println("number: "+currentDateandTime);
+                   System.out.println("so: "+maxid);
                    user.setID(maxid);
                    DBref.child(""+maxid).setValue(user);
 

@@ -9,140 +9,171 @@
         android:id="@+id/titleImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customer Image: "
+        android:text="Ảnh Giao Hàng: "
         android:translationX="20dp"
         android:layout_marginTop="50dp"
-        android:textSize="20dp"
+        android:textSize="25dp"
         />
 
     <TextView
         android:id="@+id/titleName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customer Name: "
+        android:text="Tên: "
         android:translationX="15dp"
         android:layout_marginTop="150dp"
-        android:translationY="35dp"
-        android:textSize="20dp"/>
+        android:translationY="25dp"
+        android:textSize="25dp"/>
+
     <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customername"
-        android:translationX="220dp"
         android:layout_marginTop="155dp"
-        android:translationY="35dp"
-        android:textSize="15dp"/>
+        android:fontFamily="sans-serif-black"
+        android:text="Customername"
+        android:textSize="22dp"
+        android:translationX="140dp"
+        android:translationY="25dp" />
     <TextView
         android:id="@+id/titleGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customer Name: "
+        android:text="Giới Tính: "
         android:translationX="15dp"
-        android:layout_marginTop="160dp"
-        android:translationY="80dp"
-        android:textSize="20dp"/>
+        android:translationY="230dp"
+        android:textSize="25dp"/>
+
     <TextView
         android:id="@+id/Gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customergender"
-        android:translationX="210dp"
         android:layout_marginTop="155dp"
-        android:translationY="90dp"
-        android:textSize="15dp"/>
+        android:fontFamily="sans-serif-black"
+        android:text="Customergender"
+        android:textSize="22dp"
+        android:translationX="200dp"
+        android:translationY="80dp" />
+
     <TextView
         android:id="@+id/titlePhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customer Phone: "
+        android:text="Số Điện Thoại: "
         android:translationX="15dp"
         android:layout_marginTop="170dp"
         android:translationY="120dp"
-        android:textSize="20dp"/>
+        android:textSize="22dp"/>
+
     <TextView
         android:id="@+id/Phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customerphone"
-        android:translationX="200dp"
         android:layout_marginTop="185dp"
-        android:translationY="120dp"
-        android:textSize="15dp"/>
+        android:fontFamily="sans-serif-black"
+        android:text="Customerphone"
+        android:textSize="22dp"
+        android:translationX="200dp"
+        android:translationY="105dp" />
+
     <TextView
         android:id="@+id/titleAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customer Address: "
-        android:translationX="15dp"
         android:layout_marginTop="150dp"
-        android:translationY="210dp"
-        android:textSize="20dp"/>
+        android:text="Địa Chỉ: "
+        android:textSize="25dp"
+        android:translationX="15dp"
+        android:translationY="200dp" />
+
     <TextView
         android:id="@+id/Address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Customername"
-        android:translationX="220dp"
         android:layout_marginTop="155dp"
-        android:translationY="210dp"
-        android:textSize="15dp"/>
+        android:fontFamily="sans-serif-black"
+        android:text="Customername"
+        android:textSize="22dp"
+        android:translationX="150dp"
+        android:translationY="200dp" />
+
     <TextView
         android:id="@+id/titleGasweight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gas Product: "
+        android:layout_marginTop="390dp"
+        android:text="Sản Phẩm: "
+        android:textSize="25dp"
         android:translationX="15dp"
-        android:layout_marginTop="370dp"
-        android:translationY="110dp"
-        android:textSize="20dp"/>
+        android:translationY="90dp" />
+
     <TextView
         android:id="@+id/Gascanproduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="weigh"
-        android:translationX="220dp"
         android:layout_marginTop="370dp"
-        android:translationY="110dp"
-        android:textSize="15dp"/>
+        android:fontFamily="sans-serif-black"
+        android:text="product"
+        android:textSize="22dp"
+        android:translationX="200dp"
+        android:translationY="110dp" />
 
     <TextView
         android:id="@+id/GasStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="340dp"
+        android:fontFamily="sans-serif-black"
         android:text="status"
-        android:textSize="15dp"
-        android:translationX="120dp"
-        android:translationY="185dp" />
+        android:textSize="22dp"
+        android:translationX="200dp"
+        android:translationY="195dp" />
+
     <TextView
         android:id="@+id/Datetime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="340dp"
+        android:fontFamily="sans-serif-black"
         android:text="Datetime"
-        android:textSize="15dp"
-        android:translationX="120dp"
-        android:translationY="225dp" />
+        android:textSize="22dp"
+        android:translationX="200dp"
+        android:translationY="245dp"
+
+        />
+
+    <TextView
+        android:id="@+id/Deliverytime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Datetime"
+        android:textSize="22dp"
+        android:translationX="240dp"
+        android:translationY="290dp"
+
+        />
 
     <TextView
         android:id="@+id/titleGastrademark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gas can trademark: "
+        android:text="Thương Hiệu: "
         android:translationX="15dp"
-        android:layout_marginTop="310dp"
-        android:translationY="120dp"
-        android:textSize="20dp"/>
+        android:translationY="420dp"
+        android:textSize="25dp"/>
+
     <TextView
         android:id="@+id/Gastrademark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="trademark"
-        android:translationX="240dp"
         android:layout_marginTop="310dp"
-        android:translationY="125dp"
-        android:textSize="15dp"/>
+        android:fontFamily="sans-serif-black"
+        android:text="trademark"
+        android:textSize="22dp"
+        android:translationX="200dp"
+        android:translationY="110dp" />
 
 
     <ImageView
@@ -152,30 +183,35 @@
         android:layout_height="150dp"
         android:translationX="220dp"
         android:translationY="10dp"/>
+
     <TextView
         android:id="@+id/titleStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Status: "
-        android:translationX="15dp"
         android:layout_marginTop="340dp"
-        android:translationY="180dp"
-        android:textSize="20dp"/>
+        android:text="Trạng Thái: "
+        android:textSize="25dp"
+        android:translationX="15dp"
+        android:translationY="190dp" />
+
     <TextView
         android:id="@+id/titleDatetime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date: "
-        android:translationX="15dp"
         android:layout_marginTop="340dp"
-        android:translationY="220dp"
-        android:textSize="20dp"/>
-    <Button
-        android:id="@+id/btnEditinfo"
+        android:text="Ngày Đặt: "
+        android:textSize="25dp"
+        android:translationX="15dp"
+        android:translationY="240dp" />
+
+    <TextView
+        android:id="@+id/titleDelivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sửa Thông Tin"
-        android:translationX="66dp"
-        android:translationY="620dp"/>
+        android:layout_marginTop="340dp"
+        android:text="Ngày Giao Hàng: "
+        android:textSize="25dp"
+        android:translationX="15dp"
+        android:translationY="290dp" />
 
 </FrameLayout>

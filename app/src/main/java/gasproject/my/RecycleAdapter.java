@@ -73,8 +73,10 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
         System.out.println("hi" +user.getID());
 
         holder.nameText.setText(user.getName());
-
-        holder.status.setText(user.getStatus());
+        if(user.getStatus().equals("not complete"))
+        {
+            holder.status.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.uncheck,0,0,0);
+        }
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +85,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
                 System.out.println("hi2 " +user.getID());
 
                 FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-                CustomerInfo fragment1 = new CustomerInfo(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(), user.getGasproduct(),user.getStatus(),user.getID());
+                CustomerInfo fragment1 = new CustomerInfo(user.getName(),user.getPhoneNumber(),user.getAddress(),user.getGender(),user.getGastrademark(), user.getGasproduct(),user.getStatus(),user.getID(),user.getDateTime(),user.getDeliverydatetime());
                 transaction.replace(R.id.frame_layout, fragment1);
                 transaction.commit();
             }

@@ -41,7 +41,7 @@ import java.util.Locale;
 
 import gasproject.my.R;
 import gasproject.my.User;
-import gasproject.my.databinding.ActivityMainBinding;
+
 
 
 public class CustomerInfo extends Fragment {
@@ -58,21 +58,20 @@ public class CustomerInfo extends Fragment {
     DatabaseReference DBref;
      Button upimgbtn;
     RecyclerView.Adapter adapter;
-    ActivityMainBinding binding;
     Uri uri;
     SimpleDateFormat sdf  = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
     String currentDateandTime = sdf.format(new Date());
     FirebaseAuth mAuth;
     private StorageReference storageReference;
 
-    String name,address,gender,gasproduct,gastrademark,status;
+    String name,address,gender,gasproduct,gastrademark,status,datetime,Deliverytime;
     int phonenumber;
     long ID;
 
     public CustomerInfo() {
 
     }
-    public CustomerInfo(String name,int phonenumber,String address,String gender,String gastrademark , String gasproduct, String Status,long ID ) {
+    public CustomerInfo(String name,int phonenumber,String address,String gender,String gastrademark ,String gasproduct, String Status,long ID,String datetime,String Deliverytime ) {
         this.name = name;
         this.phonenumber= phonenumber;
         this.address = address;
@@ -81,6 +80,8 @@ public class CustomerInfo extends Fragment {
         this.gasproduct = gasproduct;
         this.status = Status;
         this.ID = ID;
+        this.datetime = datetime;
+        this.Deliverytime = Deliverytime;
     }
 
 
@@ -126,8 +127,8 @@ public class CustomerInfo extends Fragment {
         textview.setText(name);
         textview2.setText(String.valueOf(phonenumber));
         textview3.setText(address);
-        textview4.setText(gastrademark);
-        textview5.setText(gasproduct);
+        textview4.setText(gasproduct);
+        textview5.setText(gastrademark);
         textview6.setText(gender);
 
             FloatingActionButton cambtn = view.findViewById(R.id.CamIcon);
@@ -165,7 +166,8 @@ public class CustomerInfo extends Fragment {
                 user.setGender(gender);
                 user.setPhoneNumber(phonenumber);
                 user.setStatus("complete");
-                user.setDateTime(currentDateandTime);
+                user.setDateTime(datetime);
+                user.setDeliverydatetime(currentDateandTime);
                 DBref = FirebaseDatabase.getInstance("https://projectsgm-fc929-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("User");
                 String id = String.valueOf(ID);
                 System.out.println("so : "+ID);

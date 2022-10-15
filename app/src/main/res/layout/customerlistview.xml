@@ -41,19 +41,19 @@
 
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="status"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:translationX="220dp"
-            android:translationY="-25dp"/>
+
+
 
 
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:translationX="300dp"
+        />
 
 </androidx.cardview.widget.CardView>
