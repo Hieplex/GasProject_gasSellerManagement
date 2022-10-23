@@ -31,6 +31,7 @@ import gasproject.my.fragments.Login;
 public class MainActivity extends AppCompatActivity {
     private Button loginbtn ;
     private Button camerabtn ;
+
     String[] items = {"12kg","45kg","48kg"};
     ArrayAdapter<String> adapterItems;
     AutoCompleteTextView listgas;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         BottomNavigationView bottomnv = findViewById(R.id.bottomnavigationView);
+
         bottomnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
 
 

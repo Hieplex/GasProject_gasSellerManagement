@@ -75,7 +75,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
         holder.nameText.setText(user.getName());
         if(user.getStatus().equals("not complete"))
         {
-            holder.status.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.uncheck,0,0,0);
+            holder.status.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.pending,0,0,0);
         }
 
         holder.layout.setOnClickListener(new View.OnClickListener() {

@@ -21,7 +21,7 @@
         android:background="@android:color/holo_red_dark"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:text="Gasoline" />
+        android:text="Gas Management" />
 
     <EditText
         android:id="@+id/edtTextAccount"
