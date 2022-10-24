@@ -159,11 +159,11 @@ public class GasList extends Fragment {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
                if(!snapshot.exists()){
-                   Toast.makeText(getContext(),"not exsits",Toast.LENGTH_LONG).show();
+                   Toast.makeText(getContext(),"Add Succesfully !!!",Toast.LENGTH_LONG).show();
                    DBref.child("").setValue(gas.getGascanweight());
                }
                else {
-                   Toast.makeText(getContext(),"exsits",Toast.LENGTH_LONG).show();
+                   Toast.makeText(getContext(),"Already Exist !!",Toast.LENGTH_LONG).show();
                }
            }
 

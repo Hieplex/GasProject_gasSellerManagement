@@ -44,6 +44,6 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="30dp"
-        android:text="Customer List" />
+        android:text="Finished Order" />
 
 </FrameLayout>

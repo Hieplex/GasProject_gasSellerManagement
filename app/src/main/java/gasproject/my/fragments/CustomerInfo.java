@@ -184,7 +184,7 @@ public class CustomerInfo extends Fragment {
         uploadimg(bb);
     }
     public void uploadimg(byte[] bb){
-        StorageReference sr = storageReference.child("image/"+name+".jpg");
+        StorageReference sr = storageReference.child("image/"+ID+".jpg");
         sr.putBytes(bb).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

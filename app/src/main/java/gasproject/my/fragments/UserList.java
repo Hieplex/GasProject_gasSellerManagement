@@ -173,9 +173,8 @@ public class UserList extends Fragment {
         pushdata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(getContext(),"Add Order Successfully!",Toast.LENGTH_LONG).show();
                 PushData();
-
 
             }
 

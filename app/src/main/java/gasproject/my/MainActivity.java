@@ -41,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-
+        FragmentTransaction transaction = MainActivity.this.getSupportFragmentManager().beginTransaction();
+        Customerlist fragment1 = new Customerlist();
+        transaction.replace(R.id.frame_layout, fragment1);
+        transaction.commit();
         BottomNavigationView bottomnv = findViewById(R.id.bottomnavigationView);
 
         bottomnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
